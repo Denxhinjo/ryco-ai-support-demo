@@ -1,0 +1,14 @@
+{
+  "name": "ryco-ai-support-agent-demo",
+  "version": "1.0.0",
+  "description": "AI-powered IT support agent demo — Copilot Studio / Power Automate architecture showcase",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "groq-sdk": "^0.15.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "resend": "^4.5.0"
+  }
+}

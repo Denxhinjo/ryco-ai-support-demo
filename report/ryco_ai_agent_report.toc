@@ -1,0 +1,71 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Background}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Project Objectives}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Scope \& Constraints}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Problem Statement}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Organisational Context}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Identified Pain Points}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Solution Overview}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Design Philosophy}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}High-Level Flow}{4}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Original Production Architecture}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Microsoft Copilot Studio --- Dialog Engine}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Power Automate --- Cloud Flow}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Data Layer --- Dataverse}{5}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}ITSM Integration}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Microsoft Teams --- Deployment Channel}{6}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Data Flow --- Field Mapping Table}{6}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Public Demo Architecture}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Design Goals}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Technology Stack}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Project File Structure}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Backend Implementation}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}API Design}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}System Prompt Engineering}{8}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Ticket Data Format}{8}{subsubsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.3}PII Redaction}{9}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Phase Tag Parsing}{9}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Ticket Routing and SLA}{10}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Supabase Integration}{10}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Transactional Email (Resend)}{11}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Ticket ID Generation}{11}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Database Design}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Schema}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Query Pattern}{12}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Frontend Implementation}{12}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Page Structure}{12}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Client-Side State}{12}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Conversation History}{13}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Email Address Capture}{13}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Phase-Driven UI}{13}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Step Tracker}{14}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Flow Animation}{15}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Ticket Card Display}{15}{subsection.8.8}%
+\contentsline {subsection}{\numberline {8.9}Live Ticket Table}{15}{subsection.8.9}%
+\contentsline {section}{\numberline {9}Mobile Responsiveness}{15}{section.9}%
+\contentsline {section}{\numberline {10}Privacy and Security}{16}{section.10}%
+\contentsline {subsection}{\numberline {10.1}PII Handling Summary}{16}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Secrets Management}{16}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}CORS Policy}{17}{subsection.10.3}%
+\contentsline {section}{\numberline {11}Deployment}{17}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Vercel Configuration}{17}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Environment Variables (Production)}{18}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Deployment Issues Encountered}{18}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Sample Ticket Data}{18}{section.12}%
+\contentsline {section}{\numberline {13}Representative Impact}{19}{section.13}%
+\contentsline {section}{\numberline {14}Key Design Decisions}{19}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Stateless API with Client-Side History}{19}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Tag-Based AI Output Protocol}{20}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Two-Phase Conversation Design}{20}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}PII Redaction Architecture}{20}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Phase-Driven Step Tracker vs.\ Message Count}{20}{subsection.14.5}%
+\contentsline {section}{\numberline {15}Challenges and Lessons Learned}{20}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Prompt Engineering Stability}{20}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Environment Variable Formatting}{20}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Vercel vs.\ AWS Lambda Configuration}{21}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}iOS Safari Input Zoom}{21}{subsection.15.4}%
+\contentsline {subsection}{\numberline {15.5}Honest Metrics}{21}{subsection.15.5}%
+\contentsline {section}{\numberline {16}Conclusion}{21}{section.16}%
+\contentsline {section}{\numberline {A}Dependencies}{22}{appendix.A}%
+\contentsline {section}{\numberline {B}Groq Model Selection}{22}{appendix.B}%
+\contentsline {section}{\numberline {C}Full System Prompt}{22}{appendix.C}%

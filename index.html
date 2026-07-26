@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYCO AI Support Agent — Demo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        RYCO AI Support Agent
+      </span>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Overview</a></li>
+        <li><a href="demo.html">Live Demo</a></li>
+        <li><a href="architecture.html">Architecture</a></li>
+        <li><a href="data/sample-tickets.json" target="_blank">Sample Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="badge-row">
+        <span class="badge badge-blue">Microsoft Copilot Studio</span>
+        <span class="badge badge-purple">Power Automate</span>
+        <span class="badge badge-green">Deployed at Scale</span>
+      </div>
+      <h1>AI-Powered IT Support Agent</h1>
+      <p class="hero-sub">
+        An intelligent virtual agent that triages internal IT requests, collects structured
+        intake data, and automatically routes tickets — eliminating repetitive manual work.
+      </p>
+      <div class="hero-actions">
+        <a href="demo.html" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Run Interactive Demo
+        </a>
+        <a href="architecture.html" class="btn btn-outline">View Architecture</a>
+      </div>
+    </div>
+    <div class="hero-mockup">
+      <div class="chat-preview">
+        <div class="chat-preview-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="chat-title">IT Support — Teams Channel</span>
+        </div>
+        <div class="chat-preview-body">
+          <div class="msg bot"><span class="avatar">🤖</span><div class="bubble">Hi! I'm the IT Support Agent. How can I help you today?</div></div>
+          <div class="msg user"><div class="bubble">My laptop won't connect to the VPN</div></div>
+          <div class="msg bot"><span class="avatar">🤖</span><div class="bubble">I can help with that. What's your work email address?</div></div>
+          <div class="msg user"><div class="bubble">j.smith@ryco.com</div></div>
+          <div class="msg bot"><span class="avatar">🤖</span><div class="bubble">Got it. How urgent is this? <strong>High / Medium / Low</strong></div></div>
+          <div class="msg user"><div class="bubble">High — I have a client call in 1 hour</div></div>
+          <div class="msg bot tick"><span class="avatar">🤖</span><div class="bubble success">✅ Ticket <strong>#INC-20481</strong> created and assigned to the Network team. ETA: 30 min.</div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="card problem-card">
+          <div class="card-icon red-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h2>The Problem</h2>
+          <ul>
+            <li>IT helpdesk received a high volume of support requests via ad-hoc emails and Teams messages</li>
+            <li>Requests lacked consistent structure — missing urgency, affected system, or contact details</li>
+            <li>Agents spent significant time <em>chasing missing information</em> rather than resolving issues</li>
+            <li>No SLA tracking; priority was assigned manually and inconsistently</li>
+            <li>Peak-hour bottlenecks caused lengthy delays in first response</li>
+          </ul>
+        </div>
+        <div class="card solution-card">
+          <div class="card-icon green-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>The Solution</h2>
+          <ul>
+            <li>Built a <strong>Copilot Studio</strong> virtual agent deployed to Microsoft Teams</li>
+            <li>Guided intake flow collects: email, issue description, affected system, urgency level</li>
+            <li><strong>Power Automate</strong> flow validates input, creates the ticket, sends confirmation</li>
+            <li>Tickets auto-routed to correct team (Network / Hardware / Software / Access)</li>
+            <li>First-response time reduced significantly for automated ticket categories</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Representative Impact</h2>
+      <p class="section-sub" style="margin-bottom:28px">Illustrative metrics based on typical outcomes for this type of automation. Actual results vary by organisation size and existing process maturity.</p>
+      <div class="metrics-row">
+        <div class="metric">
+          <span class="metric-value">~80%</span>
+          <span class="metric-label">Reduction in unstructured intake requests (representative)</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">High vol.</span>
+          <span class="metric-label">Repetitive ticket types automated without extra headcount</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">Hours → Min</span>
+          <span class="metric-label">Typical first-response time improvement (representative)</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0</span>
+          <span class="metric-label">Additional staff required to handle automated volume</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO FLOW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">How the Agent Works</h2>
+      <p class="section-sub">A five-step guided conversation that turns a vague Teams message into a structured, routed, and confirmed support ticket.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>User Initiates</h3>
+          <p>Employee messages the IT Support bot in Teams with a free-text description of their issue.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Agent Collects Info</h3>
+          <p>Bot asks for work email, affected system, and urgency level using adaptive card prompts.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Power Automate Fires</h3>
+          <p>A triggered flow validates the data, categorises the ticket, and routes it to the right team queue.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Ticket Created</h3>
+          <p>Ticket is logged in the ITSM system with all fields pre-populated. Ticket ID returned to user.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h3>Confirmation Sent</h3>
+          <p>User receives confirmation in Teams + email with ticket number, assigned team, and estimated SLA.</p>
+        </div>
+      </div>
+      <div class="cta-center">
+        <a href="demo.html" class="btn btn-primary">See the Full Interactive Demo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Technology Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-logo ms-logo">CS</div>
+          <h4>Microsoft Copilot Studio</h4>
+          <p>Conversational AI platform used to design, train and publish the virtual agent dialog flows.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo pa-logo">PA</div>
+          <h4>Power Automate</h4>
+          <p>Cloud flows handle ticket creation, data validation, team routing, and email notifications.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo teams-logo">T</div>
+          <h4>Microsoft Teams</h4>
+          <p>Primary deployment channel — agent is available as a Teams app for all employees.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo sp-logo">SP</div>
+          <h4>SharePoint / Dataverse</h4>
+          <p>Structured ticket data and entity lists stored in Dataverse; lookup tables in SharePoint.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo itsm-logo">IT</div>
+          <h4>ITSM Integration</h4>
+          <p>Connector to the internal IT service management system via HTTP action in Power Automate.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-logo email-logo">✉</div>
+          <h4>Exchange / Outlook</h4>
+          <p>Automated confirmation and escalation emails sent via the Office 365 Outlook connector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        This is a <strong>public demo</strong> built to showcase the architecture and UX of an internal AI support agent.
+        No proprietary data, internal endpoints, or company secrets are included.
+      </p>
+      <p class="footer-links">
+        <a href="demo.html">Interactive Demo</a> ·
+        <a href="architecture.html">Architecture</a> ·
+        <a href="data/sample-tickets.json" target="_blank">Sample Data</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

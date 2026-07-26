@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture — RYCO AI Support Agent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        RYCO AI Support Agent
+      </span>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="demo.html">Live Demo</a></li>
+        <li><a href="architecture.html" class="active">Architecture</a></li>
+        <li><a href="data/sample-tickets.json" target="_blank">Sample Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ARCHITECTURE DIAGRAM -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">System Architecture</h2>
+        <p class="section-sub">End-to-end flow from employee message to resolved ticket, across Microsoft 365 and the internal ITSM platform.</p>
+
+        <div class="arch-diagram">
+          <!-- SVG Architecture Diagram -->
+          <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" class="arch-svg">
+
+            <!-- Background layers -->
+            <rect x="0" y="0" width="900" height="520" fill="#0f172a" rx="16"/>
+
+            <!-- Layer labels -->
+            <rect x="20" y="20" width="160" height="480" fill="#1e293b" rx="10" opacity="0.5"/>
+            <text x="100" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace" font-weight="600" letter-spacing="2">EMPLOYEE</text>
+
+            <rect x="200" y="20" width="160" height="480" fill="#1e293b" rx="10" opacity="0.5"/>
+            <text x="280" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace" font-weight="600" letter-spacing="2">CHANNEL</text>
+
+            <rect x="380" y="20" width="160" height="480" fill="#1e293b" rx="10" opacity="0.5"/>
+            <text x="460" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace" font-weight="600" letter-spacing="2">AI AGENT</text>
+
+            <rect x="560" y="20" width="160" height="480" fill="#1e293b" rx="10" opacity="0.5"/>
+            <text x="640" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace" font-weight="600" letter-spacing="2">AUTOMATION</text>
+
+            <rect x="740" y="20" width="140" height="480" fill="#1e293b" rx="10" opacity="0.5"/>
+            <text x="810" y="48" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace" font-weight="600" letter-spacing="2">SYSTEMS</text>
+
+            <!-- NODE: Employee -->
+            <g transform="translate(60, 200)">
+              <rect x="-45" y="-45" width="90" height="90" rx="12" fill="#1e40af" stroke="#3b82f6" stroke-width="1.5"/>
+              <text x="0" y="-5" text-anchor="middle" font-size="26">👤</text>
+              <text x="0" y="20" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">Employee</text>
+              <text x="0" y="34" text-anchor="middle" fill="#94a3b8" font-size="9">James Smith</text>
+            </g>
+
+            <!-- NODE: Teams -->
+            <g transform="translate(280, 160)">
+              <rect x="-50" y="-45" width="100" height="90" rx="12" fill="#312e81" stroke="#818cf8" stroke-width="1.5"/>
+              <text x="0" y="-5" text-anchor="middle" font-size="26">💬</text>
+              <text x="0" y="20" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">MS Teams</text>
+              <text x="0" y="34" text-anchor="middle" fill="#94a3b8" font-size="9">IT Support Channel</text>
+            </g>
+
+            <!-- NODE: Web Chat (alt) -->
+            <g transform="translate(280, 310)">
+              <rect x="-50" y="-40" width="100" height="80" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <text x="0" y="-4" text-anchor="middle" font-size="20">🌐</text>
+              <text x="0" y="16" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">Web Chat</text>
+              <text x="0" y="30" text-anchor="middle" fill="#475569" font-size="9">(alt channel)</text>
+            </g>
+
+            <!-- NODE: Copilot Studio -->
+            <g transform="translate(460, 220)">
+              <rect x="-55" y="-55" width="110" height="110" rx="14" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+              <text x="0" y="-10" text-anchor="middle" font-size="30">🧠</text>
+              <text x="0" y="18" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">Copilot Studio</text>
+              <text x="0" y="32" text-anchor="middle" fill="#86efac" font-size="9">Dialog Engine</text>
+              <text x="0" y="44" text-anchor="middle" fill="#86efac" font-size="9">NLU + Slots</text>
+            </g>
+
+            <!-- NODE: Power Automate -->
+            <g transform="translate(640, 160)">
+              <rect x="-50" y="-50" width="100" height="100" rx="12" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="0" y="-8" text-anchor="middle" font-size="26">⚡</text>
+              <text x="0" y="18" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">Power Automate</text>
+              <text x="0" y="32" text-anchor="middle" fill="#7dd3fc" font-size="9">Cloud Flow</text>
+            </g>
+
+            <!-- NODE: Dataverse -->
+            <g transform="translate(640, 330)">
+              <rect x="-50" y="-45" width="100" height="90" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+              <text x="0" y="-5" text-anchor="middle" font-size="22">🗄️</text>
+              <text x="0" y="18" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">Dataverse</text>
+              <text x="0" y="32" text-anchor="middle" fill="#94a3b8" font-size="9">Ticket Storage</text>
+            </g>
+
+            <!-- NODE: ITSM -->
+            <g transform="translate(810, 160)">
+              <rect x="-48" y="-45" width="96" height="90" rx="12" fill="#3b0764" stroke="#a855f7" stroke-width="1.5"/>
+              <text x="0" y="-5" text-anchor="middle" font-size="22">🎫</text>
+              <text x="0" y="18" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">ITSM System</text>
+              <text x="0" y="32" text-anchor="middle" fill="#d8b4fe" font-size="9">Ticket Created</text>
+            </g>
+
+            <!-- NODE: Email -->
+            <g transform="translate(810, 330)">
+              <rect x="-48" y="-40" width="96" height="80" rx="12" fill="#1a1a2e" stroke="#f97316" stroke-width="1.5"/>
+              <text x="0" y="-4" text-anchor="middle" font-size="22">✉️</text>
+              <text x="0" y="16" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">Email / Outlook</text>
+              <text x="0" y="30" text-anchor="middle" fill="#fdba74" font-size="9">Confirmation</text>
+            </g>
+
+            <!-- ARROWS -->
+            <!-- Employee → Teams -->
+            <line x1="110" y1="200" x2="225" y2="170" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+            <text x="155" y="170" fill="#60a5fa" font-size="9" font-family="monospace">sends message</text>
+
+            <!-- Teams → Copilot Studio -->
+            <line x1="332" y1="165" x2="400" y2="210" stroke="#818cf8" stroke-width="2" marker-end="url(#arrowPurple)"/>
+            <text x="340" y="188" fill="#818cf8" font-size="9" font-family="monospace">Bot Framework</text>
+
+            <!-- Web → Copilot Studio -->
+            <line x1="332" y1="305" x2="400" y2="255" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowGray)"/>
+
+            <!-- Copilot Studio → Power Automate -->
+            <line x1="517" y1="200" x2="585" y2="170" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+            <text x="525" y="178" fill="#22c55e" font-size="9" font-family="monospace">HTTP trigger</text>
+
+            <!-- Power Automate → ITSM -->
+            <line x1="692" y1="158" x2="758" y2="158" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+            <text x="700" y="148" fill="#38bdf8" font-size="9" font-family="monospace">REST API</text>
+
+            <!-- Power Automate → Dataverse -->
+            <line x1="640" y1="215" x2="640" y2="280" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+            <text x="645" y="255" fill="#38bdf8" font-size="9" font-family="monospace">write record</text>
+
+            <!-- Power Automate → Email -->
+            <line x1="692" y1="185" x2="758" y2="308" stroke="#f97316" stroke-width="2" marker-end="url(#arrowOrange)"/>
+
+            <!-- ITSM → Teams (confirmation) -->
+            <path d="M 760 140 Q 460 80 335 145" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowPurple2)"/>
+            <text x="510" y="90" fill="#a855f7" font-size="9" font-family="monospace">Ticket ID returned</text>
+
+            <!-- Dataverse → Copilot Studio (lookup) -->
+            <path d="M 588 330 Q 520 370 480 280" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowGray)"/>
+            <text x="490" y="375" fill="#475569" font-size="9" font-family="monospace">entity lookup</text>
+
+            <!-- ARROW MARKERS -->
+            <defs>
+              <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/>
+              </marker>
+              <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#818cf8"/>
+              </marker>
+              <marker id="arrowPurple2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#a855f7"/>
+              </marker>
+              <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/>
+              </marker>
+              <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#38bdf8"/>
+              </marker>
+              <marker id="arrowOrange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#f97316"/>
+              </marker>
+              <marker id="arrowGray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+              </marker>
+            </defs>
+
+            <!-- Legend -->
+            <rect x="30" y="430" width="840" height="60" rx="8" fill="#1e293b" opacity="0.7"/>
+            <line x1="50" y1="460" x2="80" y2="460" stroke="#22c55e" stroke-width="2"/>
+            <text x="88" y="464" fill="#94a3b8" font-size="10">Primary flow</text>
+            <line x1="160" y1="460" x2="190" y2="460" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="198" y="464" fill="#94a3b8" font-size="10">Alternate / async path</text>
+            <line x1="330" y1="460" x2="360" y2="460" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="368" y="464" fill="#94a3b8" font-size="10">Return / confirmation path</text>
+            <circle cx="520" cy="460" r="5" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+            <text x="532" y="464" fill="#94a3b8" font-size="10">Copilot Studio (core logic)</text>
+            <circle cx="660" cy="460" r="5" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="672" y="464" fill="#94a3b8" font-size="10">Power Automate (backend)</text>
+
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENT BREAKDOWN -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Component Breakdown</h2>
+        <div class="comp-grid">
+
+          <div class="comp-card">
+            <h3>🧠 Copilot Studio — Dialog Engine</h3>
+            <p><strong>What it does:</strong> Hosts the conversational AI agent. Manages dialog topics, slot filling, and fallback handling.</p>
+            <ul>
+              <li>Custom topics for IT categories (Hardware, Software, Network, Access)</li>
+              <li>Entity extraction for email, urgency, and system name</li>
+              <li>Escalation to human agent if confidence &lt; 0.6</li>
+              <li>Adaptive card responses for quick-reply buttons (urgency selection)</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <h3>⚡ Power Automate — Cloud Flow</h3>
+            <p><strong>What it does:</strong> Backend orchestration layer triggered by Copilot Studio via HTTP action.</p>
+            <ul>
+              <li>Input validation (email format, required fields)</li>
+              <li>Category classifier using a lookup table in SharePoint</li>
+              <li>Creates ticket record in Dataverse with all structured fields</li>
+              <li>Calls ITSM REST API to register ticket externally</li>
+              <li>Sends Outlook confirmation email with ticket details + SLA</li>
+              <li>Returns ticket ID and team assignment to Copilot Studio</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <h3>🗄️ Dataverse — Data Layer</h3>
+            <p><strong>What it does:</strong> Stores every ticket record created by the agent in a structured table.</p>
+            <ul>
+              <li>Custom "IT Support Ticket" table with 12 columns</li>
+              <li>Lookup tables for Categories, Teams, SLA tiers</li>
+              <li>Audit fields (created by, modified date, resolution timestamp)</li>
+              <li>Power BI report connects directly for weekly dashboarding</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <h3>🎫 ITSM Integration</h3>
+            <p><strong>What it does:</strong> Writes the ticket to the organisation's existing IT service management system.</p>
+            <ul>
+              <li>HTTP connector in Power Automate posts to ITSM REST endpoint</li>
+              <li>Maps Dataverse fields to ITSM schema (INC number returned)</li>
+              <li>Bi-directional: status updates from ITSM flow back to Dataverse</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <h3>💬 Microsoft Teams — Channel</h3>
+            <p><strong>What it does:</strong> Primary user-facing channel where employees interact with the agent.</p>
+            <ul>
+              <li>Agent published as a Teams app via Copilot Studio publish flow</li>
+              <li>Available in personal chat and IT Support team channel</li>
+              <li>Adaptive cards rendered natively within Teams</li>
+              <li>Proactive message sent when ticket is updated</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <h3>✉️ Outlook / Exchange</h3>
+            <p><strong>What it does:</strong> Sends email confirmations and SLA breach alerts.</p>
+            <ul>
+              <li>Office 365 Outlook connector in Power Automate</li>
+              <li>Templated HTML email with ticket summary and tracking link</li>
+              <li>Escalation email to IT manager if SLA exceeded</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA FLOW TABLE -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Data Flow — Field Mapping</h2>
+        <p class="section-sub">How each piece of user input maps through the system from conversation to ITSM record.</p>
+        <div class="table-wrap">
+          <table class="ticket-table">
+            <thead>
+              <tr>
+                <th>User Says / Selects</th>
+                <th>Copilot Studio Entity</th>
+                <th>Dataverse Field</th>
+                <th>ITSM Field</th>
+                <th>Validation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Free-text issue description</td><td>issue_description (string)</td><td>Description</td><td>short_description</td><td>Max 500 chars</td></tr>
+              <tr><td>Work email address</td><td>user_email (email entity)</td><td>RequestorEmail</td><td>caller_id (lookup)</td><td>Regex + domain whitelist</td></tr>
+              <tr><td>"High / Medium / Low"</td><td>urgency_level (enum)</td><td>Priority</td><td>priority (1/2/3)</td><td>Must be one of 3 values</td></tr>
+              <tr><td>Affected system (optional)</td><td>affected_system (string)</td><td>AffectedSystem</td><td>cmdb_ci</td><td>Fuzzy-matched to CI list</td></tr>
+              <tr><td>(derived)</td><td>category (classifier)</td><td>Category</td><td>category</td><td>SharePoint lookup table</td></tr>
+              <tr><td>(derived)</td><td>assigned_team</td><td>AssignedTeam</td><td>assignment_group</td><td>Mapped from category</td></tr>
+              <tr><td>(system)</td><td>ticket_created_at</td><td>CreatedOn</td><td>opened_at</td><td>UTC timestamp</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Public demo — architecture reflects the design pattern used; internal system names and endpoints are anonymised.</p>
+      <p class="footer-links">
+        <a href="index.html">Overview</a> ·
+        <a href="demo.html">Interactive Demo</a> ·
+        <a href="data/sample-tickets.json" target="_blank">Sample Data</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
