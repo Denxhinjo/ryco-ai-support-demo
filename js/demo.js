@@ -1,14 +1,14 @@
 /* ──────────────────────────────────────────────
    RYCO AI Support Agent — demo.js
-   Real backend: Claude API via /api/chat
+   Real backend: Groq API via /api/chat
    Tickets stored in Supabase, emails via Resend
    ────────────────────────────────────────────── */
 
 /* ── Client-side state ─────────────────────── */
-let messages      = [];    // full Claude messages array [{role, content}]
+let messages      = [];    // full chat messages array [{role, content}]
 let lastTicket    = null;  // set once the API returns a ticket object
 let isThinking    = false;
-let capturedEmail = null;  // real email, sent separately — never travels to Claude
+let capturedEmail = null;  // real email, sent separately — never travels to Groq
 
 /* ── DOM refs ──────────────────────────────── */
 const chatBody   = () => document.getElementById('chat-body');
@@ -206,7 +206,7 @@ async function handleUserInput(rawText) {
   if (!text || isThinking || lastTicket) return;
 
   /* Capture email the moment the user types it so we can send it
-     separately from the messages array — it never reaches Claude */
+     separately from the messages array — it never reaches Groq */
   if (!capturedEmail) {
     const emailMatch = text.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
     if (emailMatch) capturedEmail = emailMatch[0].toLowerCase();

@@ -1,9 +1,9 @@
 # RYCO AI Support Agent — Public Demo
 
-> A full-stack public showcase of an AI-powered IT support agent built to replicate the architecture I designed using **Microsoft Copilot Studio** and **Power Automate** in a previous role.  
+> A full-stack public showcase of an AI-powered IT support agent built to replicate the architecture I designed using **Microsoft Copilot Studio** and **Power Automate** in a previous role.
 > All proprietary data, internal endpoints, and company-specific configuration have been removed.
 
-**Live demo:** _deploy to Vercel and add your URL here_
+**Live demo:** [ryco-ai-support-demo.vercel.app](https://ryco-ai-support-demo.vercel.app/)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | Real product (confidential) | This demo |
 |---|---|
-| Microsoft Copilot Studio | Claude API (`claude-haiku`) — NLU + conversation |
+| Microsoft Copilot Studio | Groq API (`llama-3.3-70b-versatile`) — NLU + conversation |
 | Power Automate cloud flow | Vercel serverless function (`api/chat.js`) |
 | Dataverse table | Supabase PostgreSQL (`tickets` table) |
 | Office 365 Outlook connector | Resend — real HTML confirmation email |
@@ -39,7 +39,7 @@ User types IT issue in the chat
   { messages: [...], sessionId }
           │
           ▼
-  Claude API (claude-haiku-4-5)
+  Groq API (llama-3.3-70b-versatile)
   System prompt guides:
     1. Greet + ask for email
     2. Ask for more details
@@ -61,6 +61,8 @@ User types IT issue in the chat
        Ticket card renders
        Live table refreshes
 ```
+
+PII (emails, phone numbers) is redacted from the conversation before it is sent to Groq, and restored locally when building the ticket record.
 
 ---
 
@@ -85,7 +87,7 @@ npx vercel dev
 
 | Variable | Where to get it |
 |---|---|
-| `ANTHROPIC_API_KEY` | [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys) |
+| `GROQ_API_KEY` | [console.groq.com/keys](https://console.groq.com/keys) (free, no credit card) |
 | `SUPABASE_URL` | Supabase project → Settings → API → Project URL |
 | `SUPABASE_SERVICE_KEY` | Supabase project → Settings → API → `service_role` key |
 | `RESEND_API_KEY` | [resend.com/api-keys](https://resend.com/api-keys) |
@@ -147,6 +149,8 @@ Vercel automatically detects:
 
 No build step required.
 
+The live demo above is deployed this way from the `master` branch.
+
 ---
 
 ## Project Structure
@@ -159,8 +163,9 @@ No build step required.
 ├── js/demo.js               Frontend — sends messages to /api/chat
 ├── data/sample-tickets.json Reference data (not used by live table)
 ├── api/
-│   ├── chat.js              POST /api/chat — Claude + Supabase + Resend
+│   ├── chat.js              POST /api/chat — Groq + Supabase + Resend
 │   └── tickets.js           GET  /api/tickets — live ticket list
+├── report/                  Written project report (LaTeX/PDF)
 ├── package.json
 ├── vercel.json
 ├── .env.example
@@ -173,7 +178,7 @@ No build step required.
 
 | Capability | Real product | This demo |
 |---|---|---|
-| NLU / conversation | Copilot Studio topics + slot filling | Claude system prompt |
+| NLU / conversation | Copilot Studio topics + slot filling | Groq-hosted Llama system prompt |
 | Backend flow | Power Automate cloud flow | Vercel serverless function |
 | Ticket storage | Dataverse custom table | Supabase PostgreSQL |
 | Email | Office 365 Outlook connector | Resend |
@@ -190,5 +195,7 @@ This is a **public demo** repository. It does not contain:
 - Internal API endpoints, credentials, or secrets
 - Proprietary business logic or company-specific configuration
 - Any code or assets belonging to a former employer
+
+The "Representative Impact" metrics on the [overview page](index.html) are illustrative figures based on typical outcomes for this type of automation, explicitly labelled as such on the page — they are not measured results from any real deployment.
 
 The architecture and automation patterns shown here are reconstructed from scratch to demonstrate my skills and experience.

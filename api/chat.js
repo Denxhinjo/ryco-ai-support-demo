@@ -29,7 +29,7 @@ function genTicketId() {
 
 /* ── PII redaction ───────────────────────────────────────
    Strips emails and phone numbers from every message before
-   they leave our server and reach Anthropic's API.
+   they leave our server and reach Groq's API.
    The real email is passed separately in req.body.userEmail
    and substituted back in when writing the ticket to Supabase.
    ─────────────────────────────────────────────────────── */
@@ -168,7 +168,7 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'messages array required' });
   }
 
-  /* ── Redact PII before sending to Anthropic ── */
+  /* ── Redact PII before sending to Groq ── */
   const redactedMessages = redactPII(messages);
 
   /* ── Call Groq (receives no raw emails or phone numbers) ── */
@@ -206,7 +206,7 @@ module.exports = async function handler(req, res) {
       const parsed = JSON.parse(ticketMatch[1].trim());
       const { team, sla } = TEAM_MAP[parsed.category] ?? TEAM_MAP.General;
 
-      /* Restore the real email — Claude only ever saw [REDACTED_EMAIL] */
+      /* Restore the real email — Groq only ever saw [REDACTED_EMAIL] */
       const resolvedEmail = userEmail ?? parsed.email;
 
       ticket = {
